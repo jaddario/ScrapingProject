@@ -12,10 +12,12 @@ public class DistritoModaWebScraper {
 
 	static Document document;
 	private final String URL = "https://www.distritomoda.com.br/plus-size";
+	private Map<String, String> linksCategoria;
 
 	public DistritoModaWebScraper() {
 		try {
 			document = Jsoup.connect(URL).get();
+			linksCategoria = new HashMap<String, String>();
 		} catch (IOException e) {
 			throw new RuntimeException();
 		}
@@ -23,11 +25,11 @@ public class DistritoModaWebScraper {
 
 	public Map<String, String> getCategoriasDistritoModas() {
 		Elements listaCategorias = document.select("ul.nivel-dois.borda-alpha li a");
-
-		Map<String, String> linksCategoria = new HashMap<String, String>();
 		listaCategorias.forEach(categoria -> {
 			linksCategoria.put(categoria.attr("title"), categoria.attr("href"));
-		});
+		});		
 		return linksCategoria;
 	}
+	
+	
 }
