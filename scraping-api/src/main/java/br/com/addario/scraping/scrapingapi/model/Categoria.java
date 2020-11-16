@@ -14,22 +14,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Item {
+public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	@Column(name = "nome")
+	@Column(name = "nome_categoria")
 	private String nome;
-	@Column(name = "descricao")
-	private String descricao;
-	@Column(name = "preco")
-	private double preco;
-	@Column(name = "link")
-	private String link;
-	@Column(name = "link_imagem")
-	private String sourceImagem;
-	@Column(name = "categoria")
-	private Categoria categoria;
-	@Column(name = "tamanho")
-	private String tamanho;
+	@Column(name = "link_categoria")
+	private String linkCategoria;
+
 }
